@@ -1,6 +1,6 @@
 /*!
-   angular-inform v0.0.18
-   (c) 2014 (null) McNull https://github.com/McNull/angular-inform
+   angular-inform v0.0.19
+   (c) 2015 (null) McNull https://github.com/McNull/angular-inform
    License: MIT
 */
 (function(angular) {
@@ -20,6 +20,7 @@ inform.controller('InformCtrl', ["$scope", "inform", function($scope, inform) {
 inform.directive('inform', function () {
   return {
     restrict: 'AE',
+    replace: true,
     templateUrl: 'angular-inform/directive.ng.html',
     controller: 'InformCtrl'
   };
@@ -188,7 +189,7 @@ angular.module('inform-http-exception', ['inform'])
 // This file is already embedded in your main javascript output, there's no need to include this file
 // manually in the index.html. This file is only here for your debugging pleasures.
 angular.module('inform').run(['$templateCache', function($templateCache){
-  $templateCache.put('angular-inform/directive.ng.html', '<div class=\"inform\"><div ng-repeat=\"msg in messages | orderBy:\'-tickCount\'\" class=\"inform-message-wrap\"><div class=\"inform-message alert alert-{{ msg.type }} alert-dismissible\" role=\"alert\" ng-mouseenter=\"cancelTimeout(msg)\" ng-mouseleave=\"setTimeout(msg)\"><button type=\"button\" class=\"close\" ng-click=\"remove(msg)\"><span>&times;</span></button> <span class=\"inform-message-content\"><span class=\"badge inform-badge\" ng-if=\"msg.count > 1\">{{ msg.count }}</span> <span ng-if=\"msg.html\" ng-bind-html=\"msg.content\"></span> <span ng-if=\"!msg.html\" ng-bind=\"msg.content\"></span></span></div></div></div>');
+  $templateCache.put('angular-inform/directive.ng.html', '<div ng-class=\"{\'has-messages\':messages.length}\" class=\"inform\"><div ng-repeat=\"msg in messages | orderBy:\'-tickCount\'\" class=\"inform-message-wrap\"><div class=\"inform-message alert alert-{{ msg.type }} alert-dismissible\" role=\"alert\" ng-mouseenter=\"cancelTimeout(msg)\" ng-mouseleave=\"setTimeout(msg)\"><button type=\"button\" class=\"close\" ng-click=\"remove(msg)\"><span>&times;</span></button> <span class=\"inform-message-content\"><span class=\"badge inform-badge\" ng-if=\"msg.count > 1\">{{ msg.count }}</span> <span ng-if=\"msg.html\" ng-bind-html=\"msg.content\"></span> <span ng-if=\"!msg.html\" ng-bind=\"msg.content\"></span></span></div></div></div>');
 }]);
 })(angular);
 //# sourceMappingURL=angular-inform.js.map
