@@ -21,7 +21,7 @@
     "/karma.conf.js"
   ],
   "dependencies": {
-    "angular": "~1.2.16"
+    "angular": "^1.2.16"
   },
   "main": [
     "dist/angular-inform.css",
